@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import Header from './components/Header.jsx';
 import Post from './components/Post.jsx'
 import Footer from './components/Footer.jsx'
+import Form from './components/Form.jsx';
 import styles from './App.module.css';
-import { posts } from './data/posts.js';
+import { posts as initialPosts} from './data/posts.js';
 
 const App = () => {
+  const [posts, setPosts] = useState(initialPosts);
   const [uniqueTags, setUniqueTags] = useState([]);
-
+  
   // Funzione per calcolare i tag unici
   const getUniqueTags = (posts) => {
     console.log(posts);
@@ -25,9 +27,20 @@ const App = () => {
     getUniqueTags(posts);
   }, [posts]);
 
+  const handleAddPost = (newPost) => {
+    setPosts([
+      ...posts,
+      {
+        id: posts.length + 1,
+        ...newPost,
+      },
+    ]);
+  };
+
   return (
     <div className={styles.app}>
       <Header />
+      <Form onAddPost={handleAddPost} />
       <main className={styles.main}>
         {posts
             .filter((post) => post.published)
@@ -38,12 +51,12 @@ const App = () => {
               image= {post.image}  
                />
         ))}
-        <div className={styles.flex}>
+      </main>
+      <div className={styles.flex}>
         {uniqueTags.map((tag) => (
           <span className= {styles.tags}key={tag}>{tag}</span>
         ))}
       </div>
-      </main>
       <Footer />
     </div>
   );
