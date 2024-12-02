@@ -41,6 +41,10 @@ const App = () => {
     setPosts(posts.filter(post => post.id !== id));
   };
 
+  const handleEdit = (id, newTitle) => {
+    setPosts(posts.map(post => (post.id === id ? { ...post, title: newTitle } : post)));
+  };
+
   return (
     <div className={styles.app}>
       <Header />
@@ -51,6 +55,7 @@ const App = () => {
             .map((post) => (
               <Post key={post.id} post={post} 
               onDelete={() => handleDelete(post.id)}
+              onEdit={handleEdit}
               uniqueTags={uniqueTags.toString(' ')}
               title= {post.title}
               content= {post.content}
