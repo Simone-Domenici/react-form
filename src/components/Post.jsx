@@ -34,12 +34,12 @@ const Post = ({ post, onDelete, onEdit}) => {
       <div className={styles.postContent}>
         {isEditing ? (
           <>
-            <input
+            <input className={styles.editContent}
               type="text"
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
             />
-            <button onClick={handleEditSubmit}>Salva</button>
+            <button className={styles.saveButton} onClick={handleEditSubmit}>Salva</button>
           </>
         ) : (
           <>
@@ -54,7 +54,8 @@ const Post = ({ post, onDelete, onEdit}) => {
         <div className={styles.btnWrapper}>
           <button className={styles.readMoreButton}>LEGGI DI PIÙ</button>
           <div className={styles.postActions}>
-            <button onClick={() => setIsEditing(!isEditing)}>
+            <button className={styles.editBtn}
+              onClick={() => setIsEditing(!isEditing)}>
               {isEditing ? 'Annulla' : 'Modifica'}
             </button>
             <FontAwesomeIcon

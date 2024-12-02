@@ -7,7 +7,7 @@ const Form = ({ onAddPost }) => {
       image: '',
       content: '',
       tags: '',
-      published: true,
+      published: false,
       author: '',
     });
     const handleChange = (e) => {
@@ -27,7 +27,7 @@ const Form = ({ onAddPost }) => {
         tags: formState.tags.split(',').map(tag => tag.trim()),
       });
   
-      setFormState({ title: '', image: '', content: '', tags: '', published: true, author: '' });
+      setFormState({ title: '', image: '', content: '', tags: '', published: false, author: '' });
     };
   
     return (
