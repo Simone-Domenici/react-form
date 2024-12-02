@@ -39,6 +39,37 @@ const Form = ({ onAddPost }) => {
           value={formState.title}
           onChange={handleChange}
         />
+        <input
+        type="text"
+        name="image"
+        placeholder="URL immagine"
+        value={formState.image}
+        onChange={handleChange}
+      />
+      <textarea
+        name="content"
+        placeholder="Contenuto"
+        value={formState.content}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="tags"
+        placeholder="Tag (separati da virgola)"
+        value={formState.tags}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="author"
+        placeholder="Autore"
+        value={formState.author}
+        onChange={handleChange}
+      />
+      <select name="published" value={formState.published} onChange={handleChange}>
+        <option value="false">Draft</option>
+        <option value="true">Published</option>
+      </select>
         <button type="submit">Aggiungi Post</button>
       </form>
     );
