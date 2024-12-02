@@ -37,6 +37,10 @@ const App = () => {
     ]);
   };
 
+  const handleDelete = (id) => {
+    setPosts(posts.filter(post => post.id !== id));
+  };
+
   return (
     <div className={styles.app}>
       <Header />
@@ -45,7 +49,9 @@ const App = () => {
         {posts
             .filter((post) => post.published)
             .map((post) => (
-              <Post key={post.id} post={post} uniqueTags={uniqueTags.toString(' ')}
+              <Post key={post.id} post={post} 
+              onDelete={() => handleDelete(post.id)}
+              uniqueTags={uniqueTags.toString(' ')}
               title= {post.title}
               content= {post.content}
               image= {post.image}  

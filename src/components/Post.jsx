@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Post.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const Post = ({ post }) => {
+const Post = ({ post, onDelete }) => {
   const getImage = (image) => {
     return image || 'https://via.placeholder.com/600x400'; // Immagine di placeholder
   };
@@ -26,7 +28,16 @@ const Post = ({ post }) => {
             {tag}
           </span>))}
         <p>{post.content}</p>
-        <button className={styles.readMoreButton}>LEGGI DI PIÙ</button>
+        <div className={styles.btnWrapper}>
+          <button className={styles.readMoreButton}>LEGGI DI PIÙ</button>
+          <div className={styles.postActions}>
+            <FontAwesomeIcon
+              icon={faTrash}
+              className={styles.deleteIcon}
+              onClick={onDelete}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
